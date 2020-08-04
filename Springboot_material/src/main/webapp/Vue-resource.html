@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js"></script>
+		<script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="get请求" @click="getinfo"/>
+			 <div v-for="item in film_list">
+			 <span>{{item.name}}</span>
+			 </div>
+				
+			
+		</div>
+		
+		
+		
+		<script>
+			new Vue({
+				el:'#app',
+				/* data:{
+					return {
+						data:[],
+					}
+				}, */
+				methods:{
+					film_list:{
+						return 	
+					}
+					
+					
+					getinfo(){
+						var arr = this;
+						this.$http.get('http://www.liulongbin.top:3005/api/getprodlist').then(function (result){
+							console.log(result)
+							/* this.data=res.data.data; */
+						arr.film_list=result.data.data;
+							
+						})
+						
+					}
+					
+				}
+				
+			});
+			
+		</script>
+	</body>
+</html>
